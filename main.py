@@ -9,7 +9,7 @@ from DB import Db
 
 load_dotenv()
 
-page_count = 64
+page_count = 100
 
 host = os.environ.get('DB_HOST', '127.0.0.1')
 port = os.environ.get('DB_PORT', '5432')
