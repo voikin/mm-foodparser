@@ -24,6 +24,8 @@ async def get_item(url, name, session, db):
         bs = BeautifulSoup(page, 'lxml')
         table = bs.find('table', class_='recipe_calculation')
         tfoot = table.find('tfoot').find_all('td', class_='variable')
+        if float(tfoot[1].get_text()) < 50:
+            return
         img = bs.find('img', class_='recipe_image_main')
         recipe = (name, float(tfoot[0].get_text()), float(tfoot[1].get_text()), f"https://daily-menu.ru{img.get('src')}", url)
         items = table.find('tbody').find_all('tr')
